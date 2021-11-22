@@ -1,3 +1,6 @@
+#Author: Ben-Edwards44
+
+
 import pygame
 import time
 import random
@@ -101,13 +104,3 @@ while True:
 
     if keys[pygame.K_SPACE]:
         ball2 = ball(random.randint(25, screen_size[0] - 75))
-
-    if keys[pygame.K_LEFT]:
-        move_left = True
-    else:
-        move_left = False
-
-    if keys[pygame.K_RIGHT]:
-        move_right = True
-    else:
-        move_right = False
