@@ -1,4 +1,4 @@
-#Made by Ben-Edwards44
+#Author: Ben-Edwards44
 
 
 import pygame
