@@ -32,12 +32,11 @@ def place_points():
     for _ in range(int(SAMPLES)):
         x = random.uniform(-1, 1)
         y = random.uniform(-1, 1)
+        
+        draw_points(x, y)
 
         if length(x, y) <= 1:
             successes += 1
-            draw_points(x, y, (0, 255, 0))
-        else:
-            draw_points(x, y, (255, 0, 0))
 
         total += 1
 
@@ -48,13 +47,15 @@ length = lambda x, y: math.sqrt(x**2 + y**2)
 
 
 def draw_points(x, y, colour):
+    colour = (0, 255, 0) if length(x, y) < 1 else (255, 0, 0)
+
     pygame.draw.circle(window, colour, (int(SCREEN_SIZE[0] // 2 + x * RADIUS), int(SCREEN_SIZE[1] // 2 + y * RADIUS)), 2)
     pygame.display.update()
 
 
 def display_estimate(pi_estimate):
     pygame.draw.rect(window, (0, 0, 0), (10, SCREEN_SIZE[1] // 2 + RADIUS + 20, SCREEN_SIZE[0] - 20, 50))
-    font = pygame.font.Font("freesansbold.ttf", 24)
+    font = pygame.font.Font(None, 24)
     text = font.render(str(pi_estimate), True, (255, 255, 255), (0, 0, 0))
     r = text.get_rect()
     r.center = (SCREEN_SIZE[0] // 2, SCREEN_SIZE[1] // 2 + 1.5 * RADIUS)
