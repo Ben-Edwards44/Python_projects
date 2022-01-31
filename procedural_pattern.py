@@ -1,3 +1,4 @@
+#Author: Ben-Edwards44
 #Video explaining how the pattern works: https://www.youtube.com/watch?v=JbfhzlMk2eY
 
 
