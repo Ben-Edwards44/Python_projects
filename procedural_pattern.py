@@ -4,11 +4,13 @@
 
 import pygame
 import random
+import time
 
 
 SCREEN_SIZE = (500, 400)
 OFFSET = 5
 BG_COLOUR, LINE_COLOUR = (255, 255, 255), (0, 0, 0)
+WAIT_TIME = 0.0025
 points = []
 
 
@@ -25,17 +27,24 @@ def get_points():
 def draw_lines():
     window.fill(BG_COLOUR)
 
+    pygame.draw.line(window, (0, 0, 0), (0 + OFFSET, 0 + OFFSET), (0 + OFFSET, SCREEN_SIZE[1] - OFFSET))
+    pygame.draw.line(window, (0, 0, 0), (0 + OFFSET, 0 + OFFSET), (SCREEN_SIZE[0] - OFFSET, 0 + OFFSET))
+    pygame.draw.line(window, (0, 0, 0), (SCREEN_SIZE[0] - OFFSET, SCREEN_SIZE[1] - OFFSET), (SCREEN_SIZE[0] - OFFSET, 0 + OFFSET))
+    pygame.draw.line(window, (0, 0, 0), (SCREEN_SIZE[0] - OFFSET, SCREEN_SIZE[1] - OFFSET), (0 + OFFSET, SCREEN_SIZE[1] - OFFSET))
+
     for i in range(SCREEN_SIZE[1] // 10):
         inx = i * SCREEN_SIZE[0] // 10
         for x in range(inx + random.randint(0, 1), inx + SCREEN_SIZE[0] // 10 - 1, 2):
             if points[x + 1][1] == points[x][1]:
                 pygame.draw.line(window, LINE_COLOUR, points[x], points[x + 1])
+                pygame.display.update()
+                time.sleep(WAIT_TIME)
 
     for i in range(SCREEN_SIZE[0] // 10):
         for x in range(random.randint(0, 1), SCREEN_SIZE[1] // 10 - 1, 2):
             pygame.draw.line(window, LINE_COLOUR, points[x * SCREEN_SIZE[0] // 10 + i], points[(x + 1) * SCREEN_SIZE[0] // 10 + i])
-
-    pygame.display.update()
+            pygame.display.update()
+            time.sleep(WAIT_TIME)
 
 
 get_points()
@@ -51,3 +60,4 @@ while True:
 
         if keys[pygame.K_SPACE]:
             draw_lines()
+            break
