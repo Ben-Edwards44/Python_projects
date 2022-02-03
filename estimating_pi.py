@@ -46,7 +46,7 @@ def place_points():
 length = lambda x, y: math.sqrt(x**2 + y**2)
 
 
-def draw_points(x, y, colour):
+def draw_points(x, y):
     colour = (0, 255, 0) if length(x, y) < 1 else (255, 0, 0)
 
     pygame.draw.circle(window, colour, (int(SCREEN_SIZE[0] // 2 + x * RADIUS), int(SCREEN_SIZE[1] // 2 + y * RADIUS)), 2)
