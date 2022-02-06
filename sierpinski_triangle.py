@@ -11,7 +11,6 @@ NUM = 512
 
 
 def pascals_triangle(n):
-    global triangle
     global screen_size
 
     triangle = []
@@ -37,8 +36,10 @@ def pascals_triangle(n):
 
     screen_size = (len(triangle[-1]), n)
 
+    convert_triangle(triangle)
 
-def convert_triangle():
+
+def convert_triangle(triangle):
     global final_triangle
 
     final_triangle = [[] for _ in range(len(triangle))]
@@ -76,7 +77,6 @@ pygame.display.set_caption("Sierpinski's Triangle")
 window.fill((255, 255, 255))
 
 
-convert_triangle()
 draw_sierpinski_triangle()
 
 
