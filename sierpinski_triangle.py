@@ -72,6 +72,7 @@ pascals_triangle(NUM)
 
 pygame.init()
 window = pygame.display.set_mode(screen_size)
+pygame.display.set_caption("Sierpinski's Triangle")
 window.fill((255, 255, 255))
 
 
