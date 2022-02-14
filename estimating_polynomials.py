@@ -40,7 +40,7 @@ def main():
     x = random.randint(-1000, 1000)
     prev = None
 
-    while abs(x - prev) > 1e-7 or prev == None:
+    while prev == None or abs(x - prev) > 1e-7:
         prev = x
         x = find_eq_tangent(x)
 
