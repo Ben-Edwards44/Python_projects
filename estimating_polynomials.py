@@ -38,9 +38,9 @@ def find_eq_tangent(x):
 
 def main():
     x = random.randint(-1000, 1000)
-    prev = 100
+    prev = None
 
-    while abs(x - prev) > 1e-7:
+    while abs(x - prev) > 1e-7 or prev == None:
         prev = x
         x = find_eq_tangent(x)
 
