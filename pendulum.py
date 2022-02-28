@@ -1,4 +1,5 @@
 #Author: Ben-Edwards44
+#An article on the physics of a pendulum: https://www.physicsclassroom.com/class/waves/Lesson-0/Pendulum-Motion
 
 
 import math
@@ -7,6 +8,7 @@ import pygame
 
 
 SCREEN_SIZE = (600, 600)
+INITIAL_NUM = 2
 
 
 pygame.init()
@@ -20,7 +22,7 @@ class pendulum:
         self.center = center
         self.x = start_pos[0]
         self.y = start_pos[1]
-        self.max = start_pos
+        self.max_y = start_pos[1]
         self.prev_x = self.x
         
         self.accelerate = False
@@ -44,7 +46,7 @@ class pendulum:
 
         self.y = math.sqrt(self.arm_length**2 - self.x**2)
 
-        if self.y <= self.max[1] and abs(self.prev_x - self.x) > 1:
+        if self.y <= self.max_y and abs(self.prev_x - self.x) > 1:
             self.accelerate = not self.accelerate
             self.prev_x = self.x
 
@@ -68,12 +70,13 @@ def display_pendulums():
 
 def make_pendulums(n):
     for _ in range(n):
-        pendulums.append(pendulum(random.randint(1, 100), random.randint(10, SCREEN_SIZE[1] // 2), (SCREEN_SIZE[0] // 2, SCREEN_SIZE[1] // 2), (1, 1)))
+        length = random.randint(10, SCREEN_SIZE[1] // 2)
+        pendulums.append(pendulum(random.randint(1, 100), length, (SCREEN_SIZE[0] // 2, SCREEN_SIZE[1] // 2), (length - 1, 1)))
 
 
 if __name__ == "__main__":
     pendulums = []
-    make_pendulums(1)
+    make_pendulums(INITIAL_NUM)
 
     clock = pygame.time.Clock()
     while True:
