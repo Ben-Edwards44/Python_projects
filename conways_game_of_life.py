@@ -1,3 +1,7 @@
+#Author: Ben-Edwards44
+#A simulation of the cellular automaton Conway's Game of Life
+
+
 import pygame
 from random import randint
 
