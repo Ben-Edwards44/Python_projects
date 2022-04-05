@@ -1,3 +1,7 @@
+#Author: Ben-Edwards44
+#A visualisation for the binary search algorithm
+
+
 import pygame
 from random import randint
 from time import sleep
