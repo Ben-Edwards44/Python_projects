@@ -1,8 +1,10 @@
+#Author: Ben-Edwards44
+
+
 import pygame
-from time import sleep
 
 
-# Cool values for c: (-0.52, 0.57) (-0.4, 0.6) (-0.6078, 0.4380) (0.295, 0.55) (-0.624, 0.435)
+# interesting values for c: (-0.52, 0.57) (-0.4, 0.6) (-0.6078, 0.4380) (0.295, 0.55) (-0.624, 0.435)
 c = (-0.624, 0.435)
 RANGE = (-1, 1)
 SCREEN_SIZE = (500, 500)
