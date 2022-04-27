@@ -4,9 +4,9 @@
 import pygame
 
 
-SCREEN_SIZE = (650, 650)
-RANGE_X = (-1.5, 1.5)
-RANGE_Y = (-1.5, 1.5)
+SCREEN_SIZE = (500, 500)
+RANGE_X = (-2, 2)
+RANGE_Y = (-2, 2)
 
 
 pygame.init()
@@ -21,16 +21,16 @@ def mandlebrot_set():
                 a = RANGE_X[y] / SCREEN_SIZE[0] * i
                 b = RANGE_Y[y] / SCREEN_SIZE[1] * x
 
-                c = find_limit(a, b)
+                c = 255 - find_limit(a, b)
                 pygame.draw.circle(window, (c, c, c), (i + SCREEN_SIZE[0], x + SCREEN_SIZE[1] // 2), 1)
-                
+
     pygame.display.update()
 
 
 def find_limit(a, b):
     origional_a, origional_b = a, b
 
-    for i in range(1, 51):
+    for i in range(1, 501):
         new_a = a**2 - b**2
         new_b = 2 * a * b
 
@@ -38,9 +38,9 @@ def find_limit(a, b):
         b = new_b + origional_b
 
         if abs(a + b) > 10:
-            return 255 - (255 // i + 50 % 255)
+            return 255 - ((255 // i + 50) % 255)
 
-    return 0
+    return 255
 
 
 mandlebrot_set()
